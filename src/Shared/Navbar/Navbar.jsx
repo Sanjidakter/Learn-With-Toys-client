@@ -16,12 +16,12 @@ const Navbar = () => {
         <Link>Home</Link>
       </li>
       <li>
-        <Link>All Toys</Link>
+        <Link to="/allToys">All Toys</Link>
       </li>
       {user?.email ? (
         <>
           <li>
-            <Link>My Toys</Link>
+            <Link to='/myToys'>My Toys</Link>
             <Link to="/addToys">Add a Toy</Link>
             <Link>Blogs</Link>
             <button className="btn btn-outline btn-warning" onClick={handleLogOut}>Log Out</button>

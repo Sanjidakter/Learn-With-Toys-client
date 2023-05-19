@@ -1,43 +1,41 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { useForm } from "react-hook-form";
-import CreatableSelect from "react-select/creatable";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const handleAddToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
-    
+
     const photo = form.photo.value;
     const name = form.name.value;
     const sellername = form.sellername.value;
-    const selleremail = form.selleremail.value;
+    const email = form.email.value;
     const subcategory = form.subcategory.value;
     const price = form.price.value;
     const ratings = form.ratings.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-   
 
     const newToy = {
       photo,
       name,
       sellername,
-      selleremail,
+
+      email,
       subcategory,
       price,
       ratings,
       quantity,
       description,
-     
     };
 
     console.log(newToy);
 
     // send data to the server
-    fetch("http://localhost:5000/coffee", {
+    fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -99,8 +97,7 @@ const AddToys = () => {
             <label className="input-group">
               <input
                 type="text"
-                defaultValue={user?.displayName
-                }
+                defaultValue={user?.displayName}
                 name="sellername"
                 placeholder="Seller Name"
                 className="input input-bordered w-full"
@@ -118,7 +115,7 @@ const AddToys = () => {
               <input
                 type="text"
                 defaultValue={user?.email}
-                name="selleremail"
+                name="email"
                 placeholder="Seller Email"
                 className="input input-bordered w-full"
               />
