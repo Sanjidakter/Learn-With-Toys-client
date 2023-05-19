@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const Footer = () => {
   return (
@@ -31,6 +33,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        
       </footer>
       <div className="footer footer-center p-4 bg-base-300 text-base-content">
         <p>Copyright © 2023 - All right reserved by LearnWithToys Industries Ltd</p>

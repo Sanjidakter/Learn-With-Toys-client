@@ -115,6 +115,7 @@ const Login = () => {
                 G
               </button>
             </div>
+            <p className="text-warning">{error}</p>
           </div>
         </div>
       </div>
