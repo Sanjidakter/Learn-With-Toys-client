@@ -1,0 +1,29 @@
+.single-card{
+    border: 1px solid red;
+    
+    box-shadow: 4px 8px 15px rgb(12, 2, 2);
+    border-radius: 3px;
+    width: 550px;
+    margin: auto;
+    text-align: center;
+}
+.card-right{
+    padding: 10px;
+}
+.nav-item{
+    /* width: 100%;
+    margin: 0 auto !important; */
+    text-align: center !important;
+}
+.tab{
+    /* padding: 13px 40px; */
+    background-color: #d812a3;
+    cursor: pointer;
+    size: 12px;
+    font-weight: 600;
+    width: 20%;
+    height: 30%;
+}
+.tab1{
+    border-right: 2px solid rgb(243, 240, 240);
+}
