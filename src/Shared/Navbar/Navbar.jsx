@@ -29,7 +29,7 @@ const Navbar = () => {
         </>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <Link className="btn btn-outline btn-warning" to="/login">Login</Link>
         </li>
       )}
       

@@ -10,6 +10,25 @@ const MyToys = () => {
   const navigate = useNavigate();
 
 
+  // sort price
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const toggleSortOrder = () => {
+    setSortOrder((prevSortOrder) => (prevSortOrder === 'asc' ? 'desc' : 'asc'));
+  };
+
+  const sortedToys = toys.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.price - b.price;
+    } else if (sortOrder === 'desc') {
+      return b.price - a.price;
+    }
+    // Default case, no sorting
+    return 0;
+  });
+
+ 
+
   
   useEffect(() => {
     const fetchToys = async () => {
@@ -139,8 +158,9 @@ const MyToys = () => {
   };
 
   return (
-    <div>
+    <div className="p-10">
       <h2>Toys:{toys.length}</h2>
+      <button className="btn btn-outline btn-warning" onClick={toggleSortOrder}>Sort Price</button>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -160,7 +180,8 @@ const MyToys = () => {
               <th>Ratings</th>
               <th>Sub-Category</th>
               <th>Available Quantity</th>
-              <th></th>
+              <th>Toy Image</th>
+              <th>Update?</th>
             </tr>
           </thead>
           <tbody>
@@ -197,15 +218,6 @@ const MyToys = () => {
 
            
           </tbody> 
-
-
-
-         {/* {
-          toys.map(toy => <MyToysList
-          key={toy._id}
-          handleDelete={handleDelete}
-          ></MyToysList>)
-         } */}
 
         </table>
       </div>
