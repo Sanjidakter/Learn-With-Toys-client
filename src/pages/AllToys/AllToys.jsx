@@ -7,7 +7,7 @@ const AllToys = () => {
   
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/allToys`)
+    fetch(`https://server-learn-with-toy.vercel.app/allToys`)
     .then(res => res.json())
     .then(result => {
       console.log(result)

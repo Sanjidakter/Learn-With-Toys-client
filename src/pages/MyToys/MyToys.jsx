@@ -2,36 +2,68 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useNavigate } from "react-router-dom";
 import MyToysList from "./MyToysList";
+import { key } from "localforage";
 
 const MyToys = () => {
-  const { user ,email} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const navigate = useNavigate();
+
+
+  
+  useEffect(() => {
+    const fetchToys = async () => {
+      if (user) {
+        const url = `https://server-learn-with-toy.vercel.app/myToys?email=${user.email}`;
+
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          });
+
+          const data = await response.json();
+          if (!data.error) {
+            setToys(data);
+            console.log(data);
+          } else {
+            // logout and then navigate
+            navigate('/');
+          }
+        } catch (error) {
+          // Handle fetch error
+          console.error('Error fetching toys:', error);
+        }
+      }
+    };
+
+    fetchToys();
+  }, [user]);
   
 
-  const url = `http://localhost:5000/myToys?email=${user.email}`;
-  useEffect(() => {
-    fetch(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.error) {
-          setToys(data);
-          console.log(data);
-        } else {
-          // logout and then navigate
-          navigate("/");
-        }
-      });
-  }, [url, navigate]);
+  // const url = `https://server-learn-with-toy.vercel.app/myToys?email=${user.email}`;
+  // useEffect(() => {
+  //   fetch(url, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (!data.error) {
+  //         setToys(data);
+  //         console.log(data);
+  //       } else {
+  //         // logout and then navigate
+  //         navigate("/");
+  //       }
+  //     });
+  // }, [url, navigate]);
 
 
   // const handleDelete = id =>{
   //   const proceed = confirm('Are you sure you want to delete');
   //   if(proceed){
-  //      fetch(`http://localhost:5000/myToys?/${id}`,{
+  //      fetch(`https://server-learn-with-toy.vercel.app/myToys?/${id}`,{
   //       method: 'DELETE'
   //      })
   //      .then(res => res.json())
@@ -52,37 +84,47 @@ const MyToys = () => {
 
  
 
-const handleDelete = id => {
-  const proceed = confirm('Are you sure you want to delete?');
-  if (proceed) {
-    fetch(`http://localhost:5000/myToys/${id}`, {
-      method: 'DELETE'
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then(data => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          alert('Deleted successfully!');
-          const remainingToys = toys.filter(toy => toy._id !== id);
-          setToys(remainingToys);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-}
+// const handleDelete = id => {
+//   const proceed = confirm('Are you sure you want to delete?');
+//   if (proceed) {
+//     fetch(`https://server-learn-with-toy.vercel.app/myToys/${id}`, {
+//       method: 'DELETE'
+//     })
+//       .then(res => {
+//         if (!res.ok) {
+//           throw new Error('Network response was not ok');
+//         }
+//         return res.json();
+//       })
+//       .then(data => {
+//         console.log(data);
+//         if (data.deletedCount > 0) {
+//           alert('Deleted successfully!');
+//           const remainingToys = toys.filter(toy => toy._id !== id);
+//           setToys(remainingToys);
+//         }
+//       })
+//       .catch(error => {
+//         console.error('Error:', error);
+//       });
+//   }
+// }
 
+   
+  const handleDelete = (_id) => {
+    console.log("deleted toys is", _id);
+    fetch(`https://server-learn-with-toy.vercel.app/myToys/${_id}`, {
+            method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then((data)=>console.log(data));
+
+  }
 
   
   const handleUpdate = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/updateToy/${data?._id}`, {
+    fetch(`https://server-learn-with-toy.vercel.app/updateToy/${data?._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -128,7 +170,7 @@ const handleDelete = id => {
                  <th>
                 <label>
                   <button
-                    onClick={()=>handleDelete(toy.id)}
+                    onClick={()=>handleDelete(toy._id)}
                     className="btn btn-sm btn-circle"
                   >X</button>
                 </label>
