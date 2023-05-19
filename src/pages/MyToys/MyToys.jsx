@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MyToysList from "./MyToysList";
 import { key } from "localforage";
+import UpdateToyModal from "../UpdateToyModal/UpdateToyModal";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const navigate = useNavigate();
+  const [modalShow,setModalShow] = React.useState(false);
 
 
   // sort price
@@ -60,85 +62,41 @@ const MyToys = () => {
   }, [user]);
   
 
-  // const url = `https://server-learn-with-toy.vercel.app/myToys?email=${user.email}`;
-  // useEffect(() => {
-  //   fetch(url, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (!data.error) {
-  //         setToys(data);
-  //         console.log(data);
-  //       } else {
-  //         // logout and then navigate
-  //         navigate("/");
-  //       }
-  //     });
-  // }, [url, navigate]);
 
 
-  // const handleDelete = id =>{
-  //   const proceed = confirm('Are you sure you want to delete');
-  //   if(proceed){
-  //      fetch(`https://server-learn-with-toy.vercel.app/myToys?/${id}`,{
-  //       method: 'DELETE'
-  //      })
-  //      .then(res => res.json())
-  //      .then(data => {
-  //       console.log(data)
-  //       if(data.deletedCount >0){
-  //         alert('deleted successfully!');
-  //         const remainingToys = toys.filter(toy => toy._id !== id);
-  //         setToys(remainingToys)
-  //       }
-  //      })
-  //   }
-    
-    
-  // }
 
 
 
  
 
-// const handleDelete = id => {
-//   const proceed = confirm('Are you sure you want to delete?');
-//   if (proceed) {
-//     fetch(`https://server-learn-with-toy.vercel.app/myToys/${id}`, {
-//       method: 'DELETE'
-//     })
-//       .then(res => {
-//         if (!res.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         return res.json();
-//       })
-//       .then(data => {
-//         console.log(data);
-//         if (data.deletedCount > 0) {
-//           alert('Deleted successfully!');
-//           const remainingToys = toys.filter(toy => toy._id !== id);
-//           setToys(remainingToys);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Error:', error);
-//       });
-//   }
-// }
+const handleDelete = id => {
+  const proceed = confirm('Are you sure you want to delete?');
+  if (proceed) {
+    fetch(`https://server-learn-with-toy.vercel.app/myToys/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          alert('Deleted successfully!');
+          const remainingToys = toys.filter(toy => toy._id !== id);
+          setToys(remainingToys);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+}
 
    
-  const handleDelete = (_id) => {
-    console.log("deleted toys is", _id);
-    fetch(`https://server-learn-with-toy.vercel.app/myToys/${_id}`, {
-            method: 'DELETE',
-          })
-          .then(res => res.json())
-          .then((data)=>console.log(data));
-
-  }
+ 
 
   
   const handleUpdate = (data) => {
@@ -211,7 +169,11 @@ const MyToys = () => {
                   />
                 </th>
                 <th>
-                  <button onClick={() => handleUpdate(_id)}>Update</button>
+                  <Link toy={toy} to={`/updateToys/${toy._id}`}>
+                  <button  className="btn btn-xl  btn-square" >Update</button>
+                  </Link>
+                 
+                 
                 </th>
               </tr>
             ))}

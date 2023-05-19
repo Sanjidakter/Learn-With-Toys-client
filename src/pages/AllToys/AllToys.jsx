@@ -1,25 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import './AllToys.css';
 
 const AllToys = () => {
   const [toys, setToy] = useState([]);
-  
+  const {totalToys} = useLoaderData();
+  const [currentPage, setCurrentaPage] = useState(0);
+  const [itemsPerPage, setItemPerPage] = useState(20);
+  console.log(totalToys);
 
-  useEffect(()=>{
-    fetch(`https://server-learn-with-toy.vercel.app/allToys`)
-    .then(res => res.json())
-    .then(result => {
-      console.log(result)
-      setToy(result);
-    })
-  },[])
+  // const itemsPerPage = 20;
+  const totalPages = Math.ceil(totalToys/itemsPerPage);
+  const pageNumbers = [...Array(totalPages).keys()];
+  const handleSelectChange = (event) => {
+    setItemPerPage(parseInt(event.target.value));
+    setCurrentaPage(0);
+  };
 
-  
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://server-learn-with-toy.vercel.app/allToys?page=${currentPage}&limit=${itemsPerPage}`
+      );
+      const data = await response.json();
+      setToy(data);
+    }
+    fetchData();
+  }, [currentPage, itemsPerPage]);
 
   return (
-    <div>
-      <h2>Toys:{toys.length}</h2>
+    <div className="p-6">
+      <h2 className="text-center">Numer of Toys in this page:{toys.length}</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -65,6 +77,21 @@ const AllToys = () => {
         
 
         </table>
+      </div>
+
+      {/* paginataion */}
+      <div className="pagination">
+      
+        {pageNumbers.map((number) => (
+          <button
+            key={number}
+            className={currentPage === number ? "selected" : ""}
+            onClick={() => setCurrentaPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
+        
       </div>
     </div>
   );

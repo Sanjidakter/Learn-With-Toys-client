@@ -23,7 +23,6 @@ const AddToys = () => {
       photo,
       name,
       sellername,
-
       email,
       subcategory,
       price,

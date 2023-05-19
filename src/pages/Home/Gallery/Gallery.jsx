@@ -15,7 +15,7 @@ const Gallery = () => {
     return (
     <div className='mt-6 text-5xl text-center '>
         <h2 className='mb-4'>Visit our shop to get more exciting toys!!!</h2>
-          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-4 w-full">
         {images.map((image, index) => (
           <div key={index} className="bg-gray-200">
             <img src={image} alt={`Image ${index + 1}`} className="w-full h-auto" />

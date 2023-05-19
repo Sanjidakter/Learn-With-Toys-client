@@ -18,18 +18,27 @@ const Toy = ({ toy }) => {
           <div className="col-md-4">
             <img className="w-100" src={photo} alt="" />
           </div>
+
           <div className="col-md-8 card-right flex">
-          <div className="d-flex justify-content-around">
-              <h2 className="text-center">{name}</h2>
-              <p>Description: {description}</p>
-              <p>Sub-Category: {subcategory}</p>
+            <div className="bg-gray-200 p-6 rounded-lg mb-6">
+              <h2 className="text-3xl font-bold mb-4">{name}</h2>
+              <div>
+                <p className="mb-2 text-gray-700"> {description}</p>
+                
+              </div>
             </div>
-            <div className=" p-4 mt-3 d-flex justify-content-between ">
-              <div className="div">Price: {price} BDT</div>
-              <div>Ratings: {ratings}</div>
-              <p>Quantity:{quantity}</p>
+            <div className="bg-purple-300 p-6 rounded-lg flex justify-between">
+              <div className="mr-8">
+                <p className="text-gray-700">Price: {price} BDT</p>
+                <p className="text-gray-700">Ratings: {ratings}</p>
+              </div>
+              <div>
+                <p className="text-gray-700">Quantity: {quantity}</p>
+                <p className="mb-2 text-gray-700">
+                  Sub-Category: {subcategory}
+                </p>
+              </div>
             </div>
-            
           </div>
         </div>
       </div>

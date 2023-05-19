@@ -9,6 +9,7 @@ import AllToys from "../pages/AllToys/AllToys";
 import MyToys from "../pages/MyToys/MyToys";
 import Blogs from "../pages/Blogs/Blogs";
 import Error from "../pages/Error/Error";
+import UpdateToyModal from "../pages/UpdateToyModal/UpdateToyModal";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,16 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
+        loader: () => fetch('https://server-learn-with-toy.vercel.app/totalToys')
       },
       {
         path: "/myToys",
         element: <MyToys></MyToys>,
+      },
+      {
+         path:'/updateToys/:id',
+         element: <UpdateToyModal></UpdateToyModal>,
+         loader: ({params}) => fetch(`https://server-learn-with-toy.vercel.app/toys/${params.id}`)
       },
       {
         path: "/blogs",

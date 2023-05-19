@@ -7,7 +7,7 @@ const Category = () => {
   const [activeTab, setActiveTab] = useState("Puzzles");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys/${activeTab}`)
+    fetch(`https://server-learn-with-toy.vercel.app/allToys/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setToy(result);
