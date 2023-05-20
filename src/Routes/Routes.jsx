@@ -11,6 +11,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import Error from "../pages/Error/Error";
 import UpdateToyModal from "../pages/UpdateToyModal/UpdateToyModal";
 import PrivateRoute from "./PrivateRoute";
+import ToyDetails from "../pages/ToyDetails/ToyDetails";
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
       {
         path: "/myToys",
         element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+      },
+      {
+        path:'/toy-details/:id',
+        element:<ToyDetails></ToyDetails>,
+        loader:({params}) => fetch(`https://server-learn-with-toy.vercel.app/toys/${params.id}`)
+
       },
       {
          path:'/updateToys/:id',

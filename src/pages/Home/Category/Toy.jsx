@@ -60,7 +60,12 @@ const Toy = ({ toy }) => {
                 <p className="mb-2 text-gray-700">
                   Sub-Category: {subcategory}
                 </p>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleViewDetails(_id)}>View Details</button>
+                <button
+                  onClick={() => handleViewDetails(_id)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+                >
+                  View Details
+                </button>
               </div>
             </div>
           </div>
