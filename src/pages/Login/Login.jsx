@@ -6,12 +6,13 @@ const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [redirectToHome, setRedirectToHome] = useState(false);
+  // const [redirectToHome, setRedirectToHome] = useState(false);
 
+  const navigate = useNavigate();
+  const location = useLocation();
   console.log("login page location", location);
   const from = location.state?.from?.pathname || "/";
+
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -30,7 +31,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setUser(loggedUser);
-        setRedirectToHome(true);
+        // setRedirectToHome(true);
         navigate(from, { replace: true });
         // form.reset();
       })
@@ -54,9 +55,9 @@ const Login = () => {
       });
   };
 
-  if(redirectToHome){
-    return <Navigate replace to={"/"}></Navigate>
-  }
+  // if(redirectToHome){
+  //   return <Navigate replace to={"/"}></Navigate>
+  // }
 
   return (
     <div>

@@ -45,7 +45,7 @@ const UpdateToyModal = () => {
     // console.log(updatedToy);
 
     // send data to the server
-    fetch(`https://server-learn-with-toy.vercel.app/toys/${_id}`, {
+    fetch(`http://localhost:5000/toys/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedToy),

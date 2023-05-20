@@ -5,4 +5,5 @@
   
   .pagination .selected{
     background-color: #4c4388;
+    margin: 10px;
   }

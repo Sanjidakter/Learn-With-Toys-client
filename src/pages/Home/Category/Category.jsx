@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Toy from "./Toy";
 import "./Category.css"
+import { AuthContext } from "../../../providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 const Category = () => {
+  const {user} = useContext(AuthContext);
   const [toys, setToy] = useState([]);
   const [activeTab, setActiveTab] = useState("Puzzles");
 
@@ -16,7 +19,7 @@ const Category = () => {
   }, [activeTab]);
 
 
-  
+ 
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -57,7 +60,8 @@ const Category = () => {
         </div>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-4 ">
           {toys?.map((toy) => (
-            <Toy toy={toy}></Toy>
+            <Toy toy={toy}
+            ></Toy>
           ))}
         </div>
       </div>

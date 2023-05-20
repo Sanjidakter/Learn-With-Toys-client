@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
+import { Link, useLocation } from "react-router-dom";
 
 const Toy = ({ toy }) => {
+  const {user} = useContext(AuthContext);
+  const location = useLocation();
   const {
+    _id,
     name,
     photo,
     email,
@@ -11,6 +16,24 @@ const Toy = ({ toy }) => {
     quantity,
     description,
   } = toy || {};
+
+
+  const handleViewDetails = (toyId) => {
+    if (user) {
+      // Redirect to toy details page
+      // Replace "/toy-details" with the actual URL for toy details page
+      window.location.href = `/toy-details/${toyId}`;
+    } else {
+      // Show notification and redirect to login
+      alert('You have to log in first to view details');
+      // Replace "/login" with the actual URL for login page
+      window.location.href = '/login';
+    }
+  };
+
+  
+
+
   return (
     <div>
       <div className="job col-md-12 col-sm-12 col-lg-6 mb-4 ">
@@ -37,6 +60,7 @@ const Toy = ({ toy }) => {
                 <p className="mb-2 text-gray-700">
                   Sub-Category: {subcategory}
                 </p>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleViewDetails(_id)}>View Details</button>
               </div>
             </div>
           </div>
