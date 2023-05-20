@@ -96,25 +96,6 @@ const handleDelete = id => {
 }
 
    
- 
-
-  
-  // const handleUpdate = (data) => {
-  //   console.log(data);
-  //   fetch(`https://server-learn-with-toy.vercel.app/updateToy/${data?._id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       if (result.modifiedCount > 0) {
-  //         setControl(!control);
-  //       }
-  //       console.log(result);
-  //     });
-  // };
-
   return (
     <div className="p-10">
       <h2>Toys:{toys.length}</h2>
