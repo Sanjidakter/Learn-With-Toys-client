@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useNavigate } from "react-router-dom";
-import MyToysList from "./MyToysList";
-import { key } from "localforage";
-import UpdateToyModal from "../UpdateToyModal/UpdateToyModal";
+import useTitle from "../../hooks/useTitle";
+
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  useTitle('LWT|MyToys');
   const navigate = useNavigate();
   const [modalShow,setModalShow] = React.useState(false);
 
@@ -168,13 +168,13 @@ const handleDelete = id => {
                     alt=""
                   />
                 </th>
-                <th>
-                  <Link toy={toy} to={`/updateToys/${toy._id}`}>
+                 <th>
+                  <Link  to={`/updateToy/${toy._id}`}>
                   <button  className="btn btn-xl  btn-square" >Update</button>
                   </Link>
                  
                  
-                </th>
+                </th> 
               </tr>
             ))}
 

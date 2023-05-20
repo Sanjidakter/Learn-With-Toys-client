@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Signup = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
   const [redirectToHome, setRedirectToHome] = useState(false);
   const [error, setError] = useState("");
+  useTitle('LWT|Signup');
 
   const handleSignup = (event) => {
     event.preventDefault();

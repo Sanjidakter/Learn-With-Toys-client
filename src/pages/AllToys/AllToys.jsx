@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import './AllToys.css';
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const [toys, setToy] = useState([]);
   const {totalToys} = useLoaderData();
+  useTitle('LWT|AllToys');
   const [currentPage, setCurrentaPage] = useState(0);
   const [itemsPerPage, setItemPerPage] = useState(20);
   console.log(totalToys);

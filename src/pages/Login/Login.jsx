@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
+  useTitle('LWT|Login');
   // const [redirectToHome, setRedirectToHome] = useState(false);
 
   const navigate = useNavigate();

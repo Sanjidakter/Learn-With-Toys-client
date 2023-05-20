@@ -1,6 +1,9 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Blogs = () => {
+  useTitle('LWT|Blogs');
+
   return (
     <div className="bg-white py-8">
       <div className="container mx-auto px-4">
