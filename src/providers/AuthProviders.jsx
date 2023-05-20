@@ -4,16 +4,16 @@ import {GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthState
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+const goggleProvider = new GoogleAuthProvider();
 
 
 
 const AuthProviders = ({children}) => {
     const [user,setUser] = useState(null);
-    const [loading,setLoading] = useState(null);
-    const goggleProvider = new GoogleAuthProvider();
+    const [loading,setLoading] = useState(true);
+    
 
     const createUser = (email,password) => {
-        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password)
     }
     const signIn = (email, password) => {
@@ -26,16 +26,17 @@ const AuthProviders = ({children}) => {
         return signInWithPopup(auth, goggleProvider);
       };
     
-      const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-      };
+     
 
       const profileUpdate = (updateName, updatePhoto) => {
         return updateProfile(auth.currentUser, {
           displayName: updateName,
           photoURL: updatePhoto,
         });
+      };
+
+      const logOut = () => {
+        return signOut(auth);
       };
 
       useEffect(()=>{

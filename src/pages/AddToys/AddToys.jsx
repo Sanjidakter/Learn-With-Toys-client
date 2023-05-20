@@ -58,7 +58,7 @@ const AddToys = () => {
       });
   };
   return (
-    <div className="bg-[#F4F3F0] p-16">
+    <div className="bg-[#c474d7] p-16">
       <h2 className="text-3xl font-extrabold text-center">Add a TOY</h2>
       <form onSubmit={handleAddToy}>
         {/* form Photo url row */}

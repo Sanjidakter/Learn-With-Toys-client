@@ -99,21 +99,21 @@ const handleDelete = id => {
  
 
   
-  const handleUpdate = (data) => {
-    console.log(data);
-    fetch(`https://server-learn-with-toy.vercel.app/updateToy/${data?._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.modifiedCount > 0) {
-          setControl(!control);
-        }
-        console.log(result);
-      });
-  };
+  // const handleUpdate = (data) => {
+  //   console.log(data);
+  //   fetch(`https://server-learn-with-toy.vercel.app/updateToy/${data?._id}`, {
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       if (result.modifiedCount > 0) {
+  //         setControl(!control);
+  //       }
+  //       console.log(result);
+  //     });
+  // };
 
   return (
     <div className="p-10">
@@ -139,7 +139,7 @@ const handleDelete = id => {
               <th>Sub-Category</th>
               <th>Available Quantity</th>
               <th>Toy Image</th>
-              <th>Update?</th>
+              <th>Update </th>
             </tr>
           </thead>
           <tbody>
@@ -170,7 +170,7 @@ const handleDelete = id => {
                 </th>
                  <th>
                   <Link  to={`/updateToy/${toy._id}`}>
-                  <button  className="btn btn-xl  btn-square" >Update</button>
+                  <button style={{fontSize:'.700rem'}}  className="btn btn-xl  btn-square" >Update</button>
                   </Link>
                  
                  

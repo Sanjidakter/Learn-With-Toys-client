@@ -40,32 +40,35 @@ const UpdateToy = () => {
 
     console.log(updatedToy);
 
-   // send data to the server
-   fetch(`http://localhost:5000/toys/${_id}`, {
-    method: 'PUT',
-    headers: {
-        'content-type': 'application/json'
-    },
-    body: JSON.stringify(updatedToy)
-})
-    .then(res => res.json())
-    .then(data => {
+    // send data to the server
+    fetch(`https://server-learn-with-toy.vercel.app/toys/${toy._id}`,
+     {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Toy Updated Successfully',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Updated Successfully",
+            icon: "success",
+            confirmButtonText: "UPDATED",
+          });
         }
-    })
+      });
   };
 
   return (
     <div>
-      <div className="bg-[#F4F3F0] p-16">
-        <h2 className="text-3xl font-extrabold text-center">Update TOY:{name}</h2>
+      <div className="bg-[#c474d7] p-16">
+        <h2 className="text-3xl font-extrabold text-center">
+          Update TOY:{name}
+        </h2>
         <form onSubmit={handleUpdateToy}>
           {/* form Photo url row */}
           <div className="mb-8">
