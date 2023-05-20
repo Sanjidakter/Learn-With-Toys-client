@@ -1,45 +1,42 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import React from 'react';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import logo from "../../assets/logo.jpg"
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-base-200 text-base-content">
-        
-        <div className="ml-12">
-          <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
-        </div>
-      
-        <div>
-          <span className="footer-title">Newsletter</span>
-          <div className="form-control w-80">
-            <label className="label">
-              <span className="label-text">Enter your email address</span>
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="username@site.com"
-                className="input input-bordered w-full pr-16"
-              />
-              <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
-                Subscribe
-              </button>
-            </div>
+    <footer className="bg-violet-600 text-white py-8">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <img
+              src={logo} // Replace with your website logo
+              alt="Website Logo"
+              className="w-10 h-10 mr-2"
+            />
+            <span className="text-xl font-bold">Learn <span className='text-pink-500'><i>With</i></span> Toys</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <a href="#" className="text-white hover:text-gray-300">
+              <FaFacebook />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300">
+              <FaTwitter />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300">
+              <FaInstagram />
+            </a>
           </div>
         </div>
-
-        
-      </footer>
-      <div className="footer footer-center p-4 bg-base-300 text-base-content">
-        <p>Copyright © 2023 - All right reserved by LearnWithToys Industries Ltd</p>
+        <div className="mt-8 text-gray-300">
+          <p className="mb-2">Contact: info@learnwithtoys.com</p>
+          <p className="mb-2">123 Main Street, City, State, ZIP</p>
+        </div>
+        <hr className="my-8 border-gray-500" />
+        <div className="text-center text-gray-300">
+          <p>&copy; {new Date().getFullYear()} Your Website. All rights reserved.</p>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
