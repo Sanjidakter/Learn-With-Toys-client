@@ -60,6 +60,7 @@ const Signup = () => {
                 name="name"
                 placeholder="name"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -71,6 +72,7 @@ const Signup = () => {
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -93,6 +95,7 @@ const Signup = () => {
                 name="photo"
                 placeholder="photo"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control mt-6">

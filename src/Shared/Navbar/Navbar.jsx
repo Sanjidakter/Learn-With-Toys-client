@@ -13,7 +13,8 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link>Home</Link>
+        <Link to="/">Home</Link>
+        <Link to="/blogs">Blogs</Link>
       </li>
       <li>
         <Link to="/allToys">All Toys</Link>
@@ -23,7 +24,7 @@ const Navbar = () => {
           <li>
             <Link to='/myToys'>My Toys</Link>
             <Link to="/addToys">Add a Toy</Link>
-            <Link>Blogs</Link>
+            
             <button className="btn btn-outline btn-warning" onClick={handleLogOut}>Log Out</button>
           </li>
         </>
