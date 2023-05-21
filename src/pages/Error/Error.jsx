@@ -1,7 +1,9 @@
 import React from 'react';
 import errorpage from "../../assets/errorpage.webp"
+import useTitle from '../../hooks/useTitle';
 
 const Error = () => {
+    useTitle('LWT|ERROR');
     return (
         <div>
             <img style={{width:'50%'}} src={errorpage} alt="" />

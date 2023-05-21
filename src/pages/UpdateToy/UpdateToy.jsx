@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToy = () => {
+  useTitle("LWT|UpdateToys");
   const toy = useLoaderData();
   const {
     _id,
@@ -54,10 +56,10 @@ const UpdateToy = () => {
         console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: "Success!",
+            title: "UPDATED!",
             text: "Toy Updated Successfully",
             icon: "success",
-            confirmButtonText: "UPDATED",
+            confirmButtonText: "Done",
           });
         }
       });
