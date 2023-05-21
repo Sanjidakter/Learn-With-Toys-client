@@ -99,7 +99,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-primary "
                   type="submit"
                   value="Login"
                 />
@@ -107,7 +107,7 @@ const Login = () => {
             </form>
             <p className="my-4 text-center">
               Not have an account?{" "}
-              <Link className="text-orange-600 font-bold" to="/signup">
+              <Link className="text-pink-500 font-bold" to="/signup">
                 Sign Up
               </Link>{" "}
             </p>

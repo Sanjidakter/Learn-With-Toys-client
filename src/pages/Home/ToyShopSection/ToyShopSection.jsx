@@ -5,6 +5,7 @@ import t2 from "../../../assets/t2.jpg"
 const ToyShopSection = () => {
   return (
     <div className="mt-6 p-10">
+      <h2 className="text-center">Why Learn with Toys?</h2>
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="3000">
@@ -21,7 +22,7 @@ const ToyShopSection = () => {
         attention, energy and thinking it requires.
       </div>
       <div className="w-1/2 gap-4 mt-4 flex" data-aos="fade-up"
-     data-aos-duration="2000" >
+     data-aos-duration="3000" >
         <img  src={t1} alt="" />
         <img  src={t2} alt="" />
       </div>
