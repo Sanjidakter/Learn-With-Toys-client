@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   console.log("login page location", location);
-  const from = location.state?.from?.pathname || "/";
+  const from = location?.state || "/";
 
 
   const handleLogin = (event) => {
@@ -107,7 +107,7 @@ const Login = () => {
             </form>
             <p className="my-4 text-center">
               Not have an account?{" "}
-              <Link className="text-pink-500 font-bold" to="/signup">
+              <Link state={from} className="text-pink-500 font-bold" to="/signup">
                 Sign Up
               </Link>{" "}
             </p>

@@ -58,7 +58,7 @@ const AddToys = () => {
       });
   };
   return (
-    <div className="bg-[#c474d7] p-16">
+    <div className="bg-[#c474d7] p-16 font-semibold">
       <h2 className="text-3xl font-extrabold text-center">Add a TOY</h2>
       <form onSubmit={handleAddToy}>
         {/* form Photo url row */}
@@ -133,6 +133,7 @@ const AddToys = () => {
                 name="subcategory"
                 placeholder="Sub-Category"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>

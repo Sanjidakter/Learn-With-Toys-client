@@ -28,7 +28,7 @@ const Category = () => {
     <div>
       <div>
         <h1 className="title text-center text-3xl mt-5 p-5 bg-violet-800">Select Toy's category</h1>
-        <div className="tab-container text-center mb-4  p-10 ">
+        <div className="tab-container text-center mb-4  p-10 font-semibold">
           <div className="text-center w-full h-full m-auto  ">
             {/* <div className="tabs d-flex justify-content-center align-items-center"> */}
               <div

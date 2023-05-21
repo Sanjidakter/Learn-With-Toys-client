@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import "./AllToys.css";
 import useTitle from "../../hooks/useTitle";
 
@@ -38,26 +43,6 @@ const AllToys = () => {
   // Function to handle View Details button click
 
   const navigate = useNavigate();
-
-  const handleViewDetails = (toyId) => {
-    if (user) {
-      navigate(`/toy-details/${toyId}`);
-    } else {
-      const desiredLocation = `/toy-details/${toyId}`;
-      navigate('/login', { state: { from: desiredLocation } });
-    }
-  };
-
-  // const handleViewDetails = (toyId) => {
-  //   if (user) {
-  //     window.location.href = `/toy-details/${toyId}`;
-  //   } else {
-  //     // Show notification and redirect to login
-  //     alert("You have to log in first to view details");
-  //     // Replace "/login" with the actual URL for login page
-  //     window.location.href = "/login";
-  //   }
-  // };
 
   const filteredToys = toys.filter((toy) =>
     toy.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -107,12 +92,13 @@ const AllToys = () => {
                 </th>
 
                 <th>
-                  <button
-                    onClick={() => handleViewDetails(toy._id)}
+                  <Link
                     className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded "
+                    to={`/toy-details/${toy._id}`}
                   >
+                    {" "}
                     View Details
-                  </button>
+                  </Link>
                 </th>
               </tr>
             ))}

@@ -10,14 +10,14 @@ const PrivateRoute = ({ children }) => {
   console.log(location);
 
   if(loading){
-    return <Spinner></Spinner>
+    return <Spinner animation="border" variant="primary" />;
   }
 
   if (user) {
     return children;
   }
 
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate state={location.pathname}  to="/login" replace />;
 };
 
 export default PrivateRoute;

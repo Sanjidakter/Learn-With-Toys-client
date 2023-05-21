@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 
@@ -9,6 +9,11 @@ const Signup = () => {
   const [redirectToHome, setRedirectToHome] = useState(false);
   const [error, setError] = useState("");
   useTitle('LWT|Signup');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("signup page location", location);
+  const from = location?.state || "/";
 
   const handleSignup = (event) => {
     event.preventDefault();
@@ -33,7 +38,7 @@ const Signup = () => {
         profileUpdate(name, photo)
           .then(() => {
             console.log(loggedUSer);
-            setRedirectToHome(true);
+            navigate(from, { replace: true });
           })
           .catch((error) => {
             console.log(error);
