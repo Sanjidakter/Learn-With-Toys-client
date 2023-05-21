@@ -3,6 +3,7 @@ import t1 from "../../../assets/t1.jpg"
 import t2 from "../../../assets/t2.jpg"
 
 const ToyShopSection = () => {
+  
   return (
     <div className="mt-6 p-10">
       <h2 className="text-center">Why Learn with Toys?</h2>

@@ -37,17 +37,27 @@ const AllToys = () => {
 
   // Function to handle View Details button click
 
+  const navigate = useNavigate();
 
   const handleViewDetails = (toyId) => {
     if (user) {
-      window.location.href = `/toy-details/${toyId}`;
+      navigate(`/toy-details/${toyId}`);
     } else {
-      // Show notification and redirect to login
-      alert("You have to log in first to view details");
-      // Replace "/login" with the actual URL for login page
-      window.location.href = "/login";
+      const desiredLocation = `/toy-details/${toyId}`;
+      navigate('/login', { state: { from: desiredLocation } });
     }
   };
+
+  // const handleViewDetails = (toyId) => {
+  //   if (user) {
+  //     window.location.href = `/toy-details/${toyId}`;
+  //   } else {
+  //     // Show notification and redirect to login
+  //     alert("You have to log in first to view details");
+  //     // Replace "/login" with the actual URL for login page
+  //     window.location.href = "/login";
+  //   }
+  // };
 
   const filteredToys = toys.filter((toy) =>
     toy.name.toLowerCase().includes(searchTerm.toLowerCase())

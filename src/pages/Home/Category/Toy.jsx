@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons';
+
 
 const Toy = ({ toy }) => {
   const {user} = useContext(AuthContext);
@@ -51,9 +54,11 @@ const Toy = ({ toy }) => {
               </div>
             </div>
             <div className="bg-purple-300 p-4 rounded-lg flex justify-between">
-              <div className="mr-8">
-                <p className="text-gray-700">Price: {price} BDT</p>
-                <p className="text-gray-700">Ratings: {ratings}</p>
+              <div className="mr-8 mb-5">
+                <p className="text-gray-700">Buy: <br />{price} <FontAwesomeIcon icon={faDollarSign} size="sm" color="white"  />
+                   </p>
+                <p className="text-gray-700">Ratings: <br /> {ratings}<FontAwesomeIcon icon={faStar} size="sm" color="white" />
+                 </p>
               </div>
               <div>
                 <p className="text-gray-700">Quantity: {quantity}</p>

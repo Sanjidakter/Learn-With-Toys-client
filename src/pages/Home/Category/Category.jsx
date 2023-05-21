@@ -60,7 +60,9 @@ const Category = () => {
         </div>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-4 ">
           {toys?.map((toy) => (
-            <Toy toy={toy}
+            <Toy 
+            key={toy._id}
+            toy={toy}
             ></Toy>
           ))}
         </div>
