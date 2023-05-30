@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const MyToys = () => {
@@ -84,7 +85,12 @@ const handleDelete = id => {
       .then(data => {
         console.log(data);
         if (data.deletedCount > 0) {
-          alert('Deleted successfully!');
+          Swal.fire({
+            title: "UPDATED!",
+            text: "Toy Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
           const remainingToys = toys.filter(toy => toy._id !== id);
           setToys(remainingToys);
         }
